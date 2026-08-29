@@ -32,28 +32,9 @@ const Navbar = () => {
         border: '1px solid rgba(255, 255, 255, 0.12)',
         boxShadow: '0 10px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 107, 0, 0.06)'
       }}>
-        {/* Brand Logo with Profile Photo */}
-        <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-          <div style={{
-            width: '32px',
-            height: '32px',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            border: '2px solid var(--accent-orange)',
-            boxShadow: '0 0 12px rgba(255, 107, 0, 0.55)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#000000',
-            flexShrink: 0
-          }}>
-            <img 
-              src="/favicon.png" 
-              alt="Rajarshi Profile" 
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-            />
-          </div>
-          <span className="gradient-text" style={{ fontSize: '1.35rem', fontWeight: '800', letterSpacing: '-0.5px' }}>
+        {/* Clean Brand Title */}
+        <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <span className="gradient-text" style={{ fontSize: '1.4rem', fontWeight: '800', letterSpacing: '-0.5px' }}>
             Rajarshi.dev
           </span>
         </NavLink>

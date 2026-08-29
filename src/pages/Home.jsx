@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { 
   Terminal, Briefcase, Globe, Mail, Phone, MapPin, FileText, Code2, 
@@ -28,7 +29,7 @@ const LeetCodeIcon = ({ size = 18 }) => (
   </svg>
 );
 
-const MagneticButton = ({ children, className, style, href, download, target }) => {
+const MagneticButton = ({ children, className, style, href, download, target, onClick }) => {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -60,6 +61,7 @@ const MagneticButton = ({ children, className, style, href, download, target }) 
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
       download={download}
+      onClick={onClick}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: springX, y: springY }}
@@ -81,6 +83,7 @@ const MagneticButton = ({ children, className, style, href, download, target }) 
 };
 
 const Home = () => {
+  const navigate = useNavigate();
   const [typedName, setTypedName] = useState('');
   const [githubRepos, setGithubRepos] = useState(8);
   
