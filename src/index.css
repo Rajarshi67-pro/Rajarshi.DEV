@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-color: #000000;
+  --bg-secondary: #080808;
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  
+  /* Primary Theme Colors */
+  --accent-orange: #ff6b00;
+  --accent-orange-glow: rgba(255, 107, 0, 0.5);
+  --accent-blue: #00f0ff;
+  --accent-blue-glow: rgba(0, 240, 255, 0.5);
+  
+  /* Liquid Glass Styles */
+  --glass-bg: rgba(14, 14, 14, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Liquid Glass Cards with Dynamic Hover Highlights */
+.liquid-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.75);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.liquid-glass:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 107, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Solid Glowing Action Buttons */
+.btn-orange {
+  background: var(--accent-orange) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.45) !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.btn-orange:hover {
+  box-shadow: 0 0 35px rgba(255, 107, 0, 0.75) !important;
+  transform: scale(1.05) translateY(-2px) !important;
+  filter: brightness(1.1) !important;
+}
+
+.btn-blue {
+  background: var(--accent-blue) !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.45) !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.btn-blue:hover {
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.75) !important;
+  transform: scale(1.05) translateY(-2px) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Social & Pill Hover Highlights */
+.social-pill {
+  transition: all 0.25s ease !important;
+}
+
+.social-pill:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  border-color: rgba(255, 107, 0, 0.6) !important;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.35) !important;
+  background: rgba(255, 107, 0, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.social-pill-blue:hover {
+  border-color: rgba(0, 240, 255, 0.6) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35) !important;
+  background: rgba(0, 240, 255, 0.12) !important;
+  color: #00f0ff !important;
+}
+
+/* Tag / Skill Pill Hover Highlights */
+.tech-pill {
+  transition: all 0.2s ease;
+}
+
+.tech-pill:hover {
+  border-color: var(--accent-orange) !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* Gradient Text (Clean Orange to Blue) */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Container */
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+/* Page transitions wrapper */
+.page-wrapper {
+  padding-top: 110px;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-orange);
+}
+
+/* Mobile Media Queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+  
+  .page-wrapper {
+    padding-top: 95px;
+    padding-bottom: 3rem;
+  }
+
+  .liquid-glass {
+    border-radius: 14px;
+    padding: 1.3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.9rem;
+  }
+
+  .page-wrapper {
+    padding-top: 85px;
+  }
+}
