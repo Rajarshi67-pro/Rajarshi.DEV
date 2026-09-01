@@ -121,35 +121,40 @@ const Home = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  // Live Visitor Counter Increment Logic (Starts from 0, tracks real visits)
+  // Live Visitor Counter Increment Logic (Strictly initialized from 0)
   useEffect(() => {
-    const storedVisits = localStorage.getItem('portfolio_total_visits');
+    // Clear any old legacy high count values from browser storage
+    const legacy = localStorage.getItem('portfolio_total_visits');
+    if (legacy && parseInt(legacy, 10) > 100) {
+      localStorage.removeItem('portfolio_total_visits');
+      localStorage.removeItem('portfolio_today_visits');
+    }
+
+    const storedVisits = localStorage.getItem('portfolio_clean_visits');
     let currentVisits = storedVisits ? parseInt(storedVisits, 10) : 0;
     
-    // Check if new session to increment
-    const hasVisitedSession = sessionStorage.getItem('visited_current_session');
+    const hasVisitedSession = sessionStorage.getItem('visited_session_clean');
     if (!hasVisitedSession) {
       currentVisits += 1;
-      localStorage.setItem('portfolio_total_visits', currentVisits.toString());
-      sessionStorage.setItem('visited_current_session', 'true');
+      localStorage.setItem('portfolio_clean_visits', currentVisits.toString());
+      sessionStorage.setItem('visited_session_clean', 'true');
     }
     
     setVisitorCount(currentVisits);
 
-    // Track today's visits accurately from 0
     const todayDate = new Date().toDateString();
-    const lastDate = localStorage.getItem('portfolio_today_date');
-    let currentToday = (lastDate === todayDate && localStorage.getItem('portfolio_today_visits')) 
-      ? parseInt(localStorage.getItem('portfolio_today_visits'), 10) 
+    const lastDate = localStorage.getItem('portfolio_today_date_clean');
+    let currentToday = (lastDate === todayDate && localStorage.getItem('portfolio_today_visits_clean')) 
+      ? parseInt(localStorage.getItem('portfolio_today_visits_clean'), 10) 
       : 0;
 
     if (!hasVisitedSession) {
       currentToday += 1;
-      localStorage.setItem('portfolio_today_visits', currentToday.toString());
-      localStorage.setItem('portfolio_today_date', todayDate);
+      localStorage.setItem('portfolio_today_visits_clean', currentToday.toString());
+      localStorage.setItem('portfolio_today_date_clean', todayDate);
     }
 
-    setTodayVisitors(currentToday || (currentVisits > 0 ? 1 : 0));
+    setTodayVisitors(currentToday || currentVisits);
   }, []);
 
   // Fetch live GitHub repo count
@@ -516,9 +521,9 @@ const Home = () => {
               <p style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', textTransform: 'uppercase', fontWeight: '600' }}>Total Portfolio Visits</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginTop: '2px' }}>
                 <span style={{ fontSize: '1.8rem', fontWeight: '800', color: '#00f0ff', textShadow: '0 0 15px rgba(0, 240, 255, 0.4)' }}>
-                  {visitorCount.toLocaleString()}
+                  {visitorCount}
                 </span>
-                <span style={{ fontSize: '0.78rem', color: '#00ff9d', fontWeight: '700' }}>+1 You</span>
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Visits</span>
               </div>
             </div>
 
