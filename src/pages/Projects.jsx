@@ -70,20 +70,6 @@ const Projects = () => {
       accent: "var(--accent-orange)"
     },
     {
-      id: "heritage-food-atlas",
-      category: "food",
-      isLatest: true,
-      hasLiveApp: false,
-      title: "Heritage Food Atlas — Culinary Heritage & Cuisines",
-      date: "Aug 2026",
-      tagline: "Regional Cuisine & Heritage Atlas",
-      tech: ["TypeScript", "React", "Node.js", "Interactive Maps", "CSS3"],
-      desc: "Interactive digital atlas celebrating and preserving regional heritage cuisines, authentic traditional culinary recipes, cultural roots, and gastronomic geography.",
-      github: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
-      live: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
-      accent: "#ff0055"
-    },
-    {
       id: "election-prediction",
       category: "python",
       isLatest: false,
@@ -96,6 +82,34 @@ const Projects = () => {
       github: "https://github.com/Rajarshi67-pro/Election",
       live: "https://election-alpha-eosin.vercel.app/constituency.html",
       accent: "#ffbe0b"
+    },
+    {
+      id: "snake-game",
+      category: "web",
+      isLatest: false,
+      hasLiveApp: true,
+      title: "Classic Retro Snake Game",
+      date: "Jul 2025",
+      tagline: "Interactive Canvas Game",
+      tech: ["JavaScript", "HTML5 Canvas", "CSS3", "Vercel"],
+      desc: "Smooth responsive retro arcade snake game built with pure modern JavaScript, high-score tracking, collision detection, and audio feedback.",
+      github: "https://github.com/Rajarshi67-pro/Snake-game-",
+      live: "https://snake-game-pi-umber.vercel.app",
+      accent: "#00f0ff"
+    },
+    {
+      id: "heritage-food-atlas",
+      category: "food",
+      isLatest: true,
+      hasLiveApp: false,
+      title: "Heritage Food Atlas — Culinary Heritage & Cuisines",
+      date: "Aug 2026",
+      tagline: "Regional Cuisine & Heritage Atlas",
+      tech: ["TypeScript", "React", "Node.js", "Interactive Maps", "CSS3"],
+      desc: "Interactive digital atlas celebrating and preserving regional heritage cuisines, authentic traditional culinary recipes, cultural roots, and gastronomic geography.",
+      github: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
+      live: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
+      accent: "#ff0055"
     },
     {
       id: "rajarshi-dev",
@@ -132,14 +146,14 @@ const Projects = () => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.35rem 0.85rem', borderRadius: '30px', background: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.2)', marginBottom: '0.8rem' }}>
           <Sparkles size={13} color="var(--accent-orange)" />
           <span style={{ color: 'var(--accent-orange)', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.72rem', fontWeight: '700' }}>
-            Published Live Deployments
+            Live Published Web Apps & Repositories
           </span>
         </div>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '0.5rem' }}>
           Featured <span className="gradient-text">Projects</span>
         </h1>
         <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-          Explore open-source repositories and test live published web applications deployed on Vercel and Render.
+          Launch live published web applications deployed on Vercel and Render, or inspect the source code on GitHub.
         </p>
 
         {/* Filter Tabs */}
@@ -196,7 +210,7 @@ const Projects = () => {
                     </span>
                     {project.hasLiveApp && (
                       <span style={{ fontSize: '0.65rem', color: '#00ff9d', background: 'rgba(0, 255, 157, 0.1)', border: '1px solid rgba(0, 255, 157, 0.25)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: '700' }}>
-                        ● Live
+                        ● Live App
                       </span>
                     )}
                   </div>
@@ -236,8 +250,9 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Action Buttons with direct GitHub repository URLs & Live Website Links */}
+              {/* Action Buttons: GitHub Repo + Direct Live Website */}
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                {/* GitHub Code Link */}
                 <motion.a 
                   href={project.github}
                   target="_blank"
@@ -264,6 +279,7 @@ const Projects = () => {
                   <span>GitHub</span>
                 </motion.a>
 
+                {/* Direct Live Website Link */}
                 <motion.a 
                   href={project.live}
                   target="_blank"
@@ -286,7 +302,7 @@ const Projects = () => {
                     boxShadow: '0 0 10px rgba(0, 240, 255, 0.25)'
                   }}
                 >
-                  <span>{project.hasLiveApp ? 'Live Website' : 'Explore'}</span>
+                  <span>{project.hasLiveApp ? 'Live Website' : 'Explore Repo'}</span>
                   <ExternalLink size={13} strokeWidth={2.5} />
                 </motion.a>
               </div>
