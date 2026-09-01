@@ -18,7 +18,7 @@ const MobileBottomNav = () => {
 
   return (
     <div className="mobile-bottom-nav-container">
-      <nav className="mobile-bottom-dock liquid-glass">
+      <nav className="mobile-bottom-dock">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -35,52 +35,53 @@ const MobileBottomNav = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flex: 1,
-                padding: '0.45rem 0.2rem',
+                padding: '0.4rem 0.1rem',
                 textDecoration: 'none',
-                color: isActive ? '#ffffff' : '#888888',
+                color: isActive ? '#ffffff' : 'rgba(255, 255, 255, 0.45)',
                 zIndex: 2,
                 transition: 'color 0.2s ease',
               }}
             >
-              {isActive && (
-                <motion.div
-                  layoutId="mobile-nav-active"
-                  className="mobile-nav-pill"
-                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Icon
+                  size={19}
+                  color={isActive ? 'var(--accent-orange)' : 'rgba(255, 255, 255, 0.5)'}
+                  strokeWidth={isActive ? 2.5 : 1.8}
                   style={{
-                    position: 'absolute',
-                    inset: '4px',
-                    borderRadius: '12px',
-                    background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.25), rgba(0, 240, 255, 0.15))',
-                    border: '1px solid rgba(255, 107, 0, 0.5)',
-                    boxShadow: '0 0 15px rgba(255, 107, 0, 0.35)',
-                    zIndex: -1,
+                    filter: isActive ? 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.7))' : 'none',
+                    transition: 'all 0.2s ease'
                   }}
                 />
-              )}
-
-              <motion.div
-                animate={isActive ? { scale: 1.12, y: -2 } : { scale: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-              >
-                <Icon
-                  size={20}
-                  color={isActive ? 'var(--accent-orange)' : '#8a8a8a'}
-                  strokeWidth={isActive ? 2.5 : 2}
-                />
-              </motion.div>
+              </div>
 
               <span
                 style={{
-                  fontSize: '0.66rem',
+                  fontSize: '0.64rem',
                   fontWeight: isActive ? '700' : '500',
-                  marginTop: '2px',
-                  letterSpacing: '0.2px',
-                  color: isActive ? '#ffffff' : '#888888',
+                  marginTop: '3px',
+                  letterSpacing: '0.1px',
+                  color: isActive ? '#ffffff' : 'rgba(255, 255, 255, 0.5)',
                 }}
               >
                 {item.label}
               </span>
+
+              {/* Minimal Glowing Active Indicator Dot */}
+              {isActive && (
+                <motion.span
+                  layoutId="mobile-nav-dot"
+                  style={{
+                    position: 'absolute',
+                    bottom: '1px',
+                    width: '4px',
+                    height: '4px',
+                    borderRadius: '50%',
+                    background: 'var(--accent-orange)',
+                    boxShadow: '0 0 8px var(--accent-orange)'
+                  }}
+                  transition={{ type: 'spring', stiffness: 450, damping: 30 }}
+                />
+              )}
             </NavLink>
           );
         })}
@@ -90,9 +91,9 @@ const MobileBottomNav = () => {
         .mobile-bottom-nav-container {
           display: none;
           position: fixed;
-          bottom: 12px;
-          left: 12px;
-          right: 12px;
+          bottom: 10px;
+          left: 10px;
+          right: 10px;
           z-index: 9999;
           pointer-events: auto;
         }
@@ -101,13 +102,13 @@ const MobileBottomNav = () => {
           display: flex;
           align-items: center;
           justify-content: space-around;
-          background: rgba(10, 10, 10, 0.88) !important;
-          backdrop-filter: blur(20px) !important;
-          -webkit-backdrop-filter: blur(20px) !important;
-          border: 1px solid rgba(255, 255, 255, 0.15) !important;
-          border-radius: 20px !important;
-          padding: 0.35rem 0.5rem !important;
-          box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 107, 0, 0.15) !important;
+          background: rgba(12, 12, 12, 0.72) !important;
+          backdrop-filter: blur(25px) !important;
+          -webkit-backdrop-filter: blur(25px) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          border-radius: 18px !important;
+          padding: 0.35rem 0.4rem !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 15px rgba(255, 107, 0, 0.1) !important;
         }
 
         @media (max-width: 768px) {

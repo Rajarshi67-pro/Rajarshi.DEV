@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import './App.css';
@@ -19,45 +19,29 @@ import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 
-const ROUTE_ORDER = ['/', '/about', '/journey', '/projects', '/achievements', '/reviews', '/contact'];
+// Ensure route changes always scroll directly to the top
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+  }, [pathname]);
+
+  return null;
+};
 
 const PageWrapper = ({ children }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Snappy Elastic Swipe Gesture Support
-  const handleDragEnd = (event, info) => {
-    const swipeThreshold = 65;
-    const currentIndex = ROUTE_ORDER.indexOf(location.pathname);
-
-    if (currentIndex === -1) return;
-
-    if (info.offset.x < -swipeThreshold && currentIndex < ROUTE_ORDER.length - 1) {
-      // Swiped Left -> Go to Next Page
-      navigate(ROUTE_ORDER[currentIndex + 1]);
-    } else if (info.offset.x > swipeThreshold && currentIndex > 0) {
-      // Swiped Right -> Go to Previous Page
-      navigate(ROUTE_ORDER[currentIndex - 1]);
-    }
-  };
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -16, scale: 0.98 }}
-      transition={{
-        type: 'spring',
-        stiffness: 360,
-        damping: 26,
-        mass: 0.7
-      }}
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.18}
-      onDragEnd={handleDragEnd}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="container page-wrapper"
-      style={{ touchAction: 'pan-y' }}
     >
       {children}
     </motion.div>
@@ -89,6 +73,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <OpeningAnimation onComplete={() => setIntroFinished(true)} />
       <CustomCursor />
       <InteractiveBackground />
