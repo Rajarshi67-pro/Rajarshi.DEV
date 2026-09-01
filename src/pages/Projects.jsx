@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ArrowUpRight, Code2, Compass, Utensils, Terminal } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Code2, Compass, Utensils, Terminal, Globe } from 'lucide-react';
 
 const GithubIcon = ({ size = 15, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,108 +14,108 @@ const Projects = () => {
 
   const projects = [
     {
-      id: "bharatvote",
-      category: "web",
-      isLatest: true,
-      title: "BharatVote — Voting Management System",
-      date: "Nov 2025",
-      tagline: "Online Election System",
-      tech: ["Node.js", "Express", "MongoDB", "JWT"],
-      desc: "Secure online voting system with voter authentication, candidate management, one-vote-per-user integrity, and real-time tabulation.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
-      accent: "var(--accent-orange)"
-    },
-    {
-      id: "inventory-ml",
+      id: "insightforge-eda",
       category: "python",
       isLatest: true,
-      title: "Inventory & Supply Chain System",
-      date: "May 2026",
-      tagline: "AI Logistics Platform",
-      tech: ["React.js", "Oracle SQL", "Python", "ML"],
-      desc: "Full-stack warehouse and supplier management platform featuring barcode tracking, demand forecasting with ML, and RBAC security.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
-      accent: "var(--accent-blue)"
-    },
-    {
-      id: "python-automation-engine",
-      category: "python",
-      isLatest: true,
-      title: "Python Predictive Analytics & ML Suite",
-      date: "Feb 2025",
-      tagline: "Python AI & Data Engine",
-      tech: ["Python", "Pandas", "Scikit-Learn", "NumPy", "Flask"],
-      desc: "Machine learning engine for data preprocessing, statistical regression, and automated prediction pipelines with real-time REST endpoint inference.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
+      title: "InsightForge-EDA — Automated Data Intelligence & ML",
+      date: "Aug 2026",
+      tagline: "Automated EDA & ML Platform",
+      tech: ["Python", "Machine Learning", "Pandas", "Scikit-Learn", "Docker"],
+      desc: "Automatically analyzes raw datasets, detects data-quality issues, generates statistical insights, trains ML models, and produces actionable conclusions through an interactive dashboard.",
+      github: "https://github.com/Rajarshi67-pro/InsightForge-EDA",
+      live: "https://github.com/Rajarshi67-pro/InsightForge-EDA",
       accent: "#00ff9d"
     },
     {
-      id: "wander-travel",
+      id: "ai-travel-planner",
       category: "travel",
       isLatest: true,
-      title: "WanderSphere — Smart Travel Planner",
-      date: "Jan 2025",
-      tagline: "Travel Discovery & Itinerary App",
-      tech: ["React.js", "Python", "Geolocation API", "Tailwind CSS"],
-      desc: "Interactive travel itinerary builder and destination guide with interactive maps, budgeting calculator, route optimization, and live weather telemetry.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
+      title: "AI Travel Planner — Smart Trip & Itinerary System",
+      date: "Aug 2026",
+      tagline: "AI Trip Generator & Travel Hub",
+      tech: ["TypeScript", "React", "Tailwind CSS", "AI Integration", "REST APIs"],
+      desc: "AI-powered travel companion that generates custom day-by-day itineraries, hotel and attraction recommendations, budget breakdowns, and route optimization.",
+      github: "https://github.com/Rajarshi67-pro/AI-TRAVEL-PLANNER",
+      live: "https://github.com/Rajarshi67-pro/AI-TRAVEL-PLANNER",
       accent: "var(--accent-orange)"
     },
     {
-      id: "bitecraft-food",
+      id: "heritage-food-atlas",
       category: "food",
       isLatest: true,
-      title: "BiteCraft — Culinary & Food Delivery Platform",
-      date: "Dec 2024",
-      tagline: "Food Ordering & Dining System",
-      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"],
-      desc: "Full-stack food ordering and restaurant discovery application featuring custom dietary filtering, live cart management, and order status tracking.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
+      title: "Heritage Food Atlas — Culinary Heritage & Cuisines",
+      date: "Aug 2026",
+      tagline: "Regional Cuisine & Heritage Atlas",
+      tech: ["TypeScript", "React", "Node.js", "Interactive Maps", "CSS3"],
+      desc: "Interactive digital atlas celebrating and preserving regional heritage cuisines, authentic traditional culinary recipes, cultural roots, and gastronomic geography.",
+      github: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
+      live: "https://github.com/Rajarshi67-pro/Heritage-Food-Atlas",
       accent: "#ff0055"
     },
     {
-      id: "portfolio-3d",
+      id: "inventrack",
       category: "web",
-      isLatest: false,
-      title: "Personal 3D Portfolio",
-      date: "Current",
-      tagline: "Interactive Web App",
-      tech: ["React.js", "Vite", "Framer Motion"],
-      desc: "Fluid portfolio with liquid glassmorphism, 3D mouse parallax cards, custom auto-typing engine, and seamless route transitions.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
+      isLatest: true,
+      title: "InvenTrack — Enterprise Warehouse & Supply Chain",
+      date: "Jun 2026",
+      tagline: "Enterprise Logistics & Forecasting",
+      tech: ["TypeScript", "React", "PL/SQL", "Oracle SQL", "Python ML"],
+      desc: "Enterprise warehouse and supplier management platform featuring barcode integration, automated stock tracking, demand forecasting, and role-based access control.",
+      github: "https://github.com/Rajarshi67-pro/InvenTrack",
+      live: "https://github.com/Rajarshi67-pro/InvenTrack",
+      accent: "var(--accent-blue)"
+    },
+    {
+      id: "ovms-bharatvote",
+      category: "web",
+      isLatest: true,
+      title: "OVMS — Online Voting Management System",
+      date: "Jun 2026",
+      tagline: "Secure Voting Portal",
+      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "JavaScript"],
+      desc: "Robust online election management system with secure voter authentication, candidate management, one-vote-per-user integrity, and real-time live vote tabulation.",
+      github: "https://github.com/Rajarshi67-pro/OVMS",
+      live: "https://github.com/Rajarshi67-pro/OVMS",
       accent: "var(--accent-orange)"
     },
     {
-      id: "calculator-apps",
+      id: "election-prediction",
+      category: "python",
+      isLatest: false,
+      title: "Election Winner Predictor — AI Constituency Analytics",
+      date: "May 2026",
+      tagline: "AI Election Modeling",
+      tech: ["Python", "Machine Learning", "Data Modeling", "JavaScript"],
+      desc: "Constituency-level election predictive analysis system modeling candidate win probabilities based on voter demographic indicators and historical voting trends.",
+      github: "https://github.com/Rajarshi67-pro/Election",
+      live: "https://github.com/Rajarshi67-pro/Election",
+      accent: "#ffbe0b"
+    },
+    {
+      id: "rajarshi-dev",
       category: "web",
       isLatest: false,
-      title: "Interactive Web Suite",
-      date: "Dec 2024",
-      tagline: "Frontend Utilities (Pinnacle Labs)",
-      tech: ["HTML5", "CSS3", "JavaScript ES6+"],
-      desc: "High-precision web calculator and responsive personal portfolio layouts built during internship at Pinnacle Labs.",
-      github: "https://github.com/Rajarshi67-pro",
-      live: "https://github.com/Rajarshi67-pro",
+      title: "Rajarshi.DEV — Personal 3D Developer Portfolio",
+      date: "Aug 2026",
+      tagline: "Interactive 3D Portfolio",
+      tech: ["React.js", "Vite", "Framer Motion", "Liquid Glassmorphism"],
+      desc: "High-performance personal developer portfolio with liquid glassmorphic UI, live LeetCode/GitHub stats sync, mobile bottom dock, and real-time reviews.",
+      github: "https://github.com/Rajarshi67-pro/Rajarshi.DEV",
+      live: "https://github.com/Rajarshi67-pro/Rajarshi.DEV",
       accent: "var(--accent-blue)"
     }
   ];
 
   const filteredProjects = filter === 'all' 
     ? projects 
-    : projects.filter(p => p.category === filter || (filter === 'latest' && p.isLatest));
+    : projects.filter(p => p.category === filter);
 
   const filterTabs = [
     { id: 'all', label: 'All Projects' },
     { id: 'python', label: '🐍 Python & ML' },
-    { id: 'travel', label: '✈️ Travel' },
-    { id: 'food', label: '🍔 Food' },
-    { id: 'web', label: '🌐 Full-Stack' }
+    { id: 'travel', label: '✈️ AI Travel' },
+    { id: 'food', label: '🍔 Heritage Food' },
+    { id: 'web', label: '🌐 Full-Stack & Web' }
   ];
 
   return (
@@ -125,14 +125,14 @@ const Projects = () => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.35rem 0.85rem', borderRadius: '30px', background: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.2)', marginBottom: '0.8rem' }}>
           <Sparkles size={13} color="var(--accent-orange)" />
           <span style={{ color: 'var(--accent-orange)', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.72rem', fontWeight: '700' }}>
-            Featured Portfolio Work
+            GitHub Verified Repositories
           </span>
         </div>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '0.5rem' }}>
           Featured <span className="gradient-text">Projects</span>
         </h1>
         <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-          Full-stack software, Python & machine learning models, travel planners, and culinary applications.
+          Open-source software, automated Python data engines, AI travel planners, and heritage culinary platforms from GitHub.
         </p>
 
         {/* Filter Tabs */}
@@ -222,7 +222,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Buttons with direct GitHub repository URLs */}
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                 <motion.a 
                   href={project.github}
@@ -247,7 +247,7 @@ const Projects = () => {
                   }}
                 >
                   <GithubIcon size={14} />
-                  <span>GitHub</span>
+                  <span>GitHub Repo</span>
                 </motion.a>
 
                 <motion.a 
@@ -272,7 +272,7 @@ const Projects = () => {
                     boxShadow: '0 0 10px rgba(0, 240, 255, 0.25)'
                   }}
                 >
-                  <span>Live</span>
+                  <span>Explore</span>
                   <ArrowUpRight size={13} />
                 </motion.a>
               </div>
