@@ -256,12 +256,12 @@ const Home = () => {
             Computer Science & Engineering undergraduate at <strong style={{ color: '#fff' }}>Techno Main Salt Lake</strong> (2023–2027). Passionate about building high-performance full-stack architectures, database systems, AI/ML, and fluid responsive applications.
           </p>
 
-          {/* Action Buttons with Robust Direct Handlers */}
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.2rem' }}>
+          {/* Action Buttons: Perfectly Aligned Side-by-Side on Mobile & Desktop */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.85rem', maxWidth: '440px', width: '100%', marginBottom: '2rem' }}>
             
             {/* Explore Projects Button */}
             <motion.button
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => navigate('/projects')}
               className="btn-orange"
@@ -269,21 +269,22 @@ const Home = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '0.85rem 1.8rem',
-                fontSize: '0.96rem',
-                gap: '0.5rem',
-                flex: '1 1 auto',
-                maxWidth: '220px',
-                cursor: 'pointer'
+                padding: '0.82rem 1.1rem',
+                fontSize: '0.92rem',
+                gap: '0.45rem',
+                width: '100%',
+                cursor: 'pointer',
+                borderRadius: '10px',
+                whiteSpace: 'nowrap'
               }}
             >
               <span>Explore Projects</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={17} />
             </motion.button>
 
             {/* Download CV Button */}
             <motion.a
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               href="/Rajarshi_Chatterjee_CV.pdf"
               download="Rajarshi_Chatterjee_CV.pdf"
@@ -292,23 +293,24 @@ const Home = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '0.85rem 1.8rem',
-                fontSize: '0.96rem',
-                gap: '0.5rem',
-                flex: '1 1 auto',
-                maxWidth: '220px',
+                padding: '0.82rem 1.1rem',
+                fontSize: '0.92rem',
+                gap: '0.45rem',
+                width: '100%',
                 textDecoration: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                borderRadius: '10px',
+                whiteSpace: 'nowrap'
               }}
             >
-              <Download size={18} color="#000000" strokeWidth={2.5} />
+              <Download size={17} color="#000000" strokeWidth={2.5} />
               <span>Download CV</span>
             </motion.a>
           </div>
 
-          {/* Social Links */}
-          <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '500' }}>Connect:</span>
+          {/* Social Links: Balanced & Perfectly Aligned */}
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.84rem', fontWeight: '600', marginRight: '0.2rem' }}>Connect:</span>
             
             <a 
               href="https://github.com/Rajarshi67-pro" 
@@ -316,19 +318,20 @@ const Home = () => {
               rel="noopener noreferrer"
               className="social-pill"
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
+                justifyContent: 'center',
+                gap: '0.4rem',
                 color: '#fff',
-                padding: '0.45rem 0.85rem',
+                padding: '0.42rem 0.8rem',
                 background: 'rgba(255, 255, 255, 0.05)',
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.12)',
-                fontSize: '0.84rem',
+                fontSize: '0.82rem',
                 fontWeight: '600'
               }}
             >
-              <GithubIcon size={15} />
+              <GithubIcon size={14} />
               <span>GitHub</span>
             </a>
 
@@ -338,19 +341,20 @@ const Home = () => {
               rel="noopener noreferrer"
               className="social-pill social-pill-blue"
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
+                justifyContent: 'center',
+                gap: '0.4rem',
                 color: '#00f0ff',
-                padding: '0.45rem 0.85rem',
+                padding: '0.42rem 0.8rem',
                 background: 'rgba(0, 240, 255, 0.06)',
                 borderRadius: '8px',
                 border: '1px solid rgba(0, 240, 255, 0.25)',
-                fontSize: '0.84rem',
+                fontSize: '0.82rem',
                 fontWeight: '600'
               }}
             >
-              <LinkedinIcon size={15} color="#00f0ff" />
+              <LinkedinIcon size={14} color="#00f0ff" />
               <span>LinkedIn</span>
             </a>
 
@@ -358,19 +362,20 @@ const Home = () => {
               href="mailto:rajarshighs7@gmail.com" 
               className="social-pill"
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
+                justifyContent: 'center',
+                gap: '0.4rem',
                 color: '#ff6b00',
-                padding: '0.45rem 0.85rem',
+                padding: '0.42rem 0.8rem',
                 background: 'rgba(255, 107, 0, 0.06)',
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 107, 0, 0.25)',
-                fontSize: '0.84rem',
+                fontSize: '0.82rem',
                 fontWeight: '600'
               }}
             >
-              <Mail size={15} color="#ff6b00" />
+              <Mail size={14} color="#ff6b00" />
               <span>Email</span>
             </a>
           </div>
