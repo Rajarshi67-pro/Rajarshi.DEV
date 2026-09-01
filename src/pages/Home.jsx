@@ -86,8 +86,8 @@ const Home = () => {
   const navigate = useNavigate();
   const [typedName, setTypedName] = useState('');
   const [githubRepos, setGithubRepos] = useState(8);
-  const [visitorCount, setVisitorCount] = useState(1432);
-  const [todayVisitors, setTodayVisitors] = useState(46);
+  const [visitorCount, setVisitorCount] = useState(0);
+  const [todayVisitors, setTodayVisitors] = useState(0);
   
   useEffect(() => {
     let timeoutId;
@@ -121,10 +121,10 @@ const Home = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  // Live Visitor Counter Increment Logic (total visits += each visit)
+  // Live Visitor Counter Increment Logic (Starts from 0, tracks real visits)
   useEffect(() => {
     const storedVisits = localStorage.getItem('portfolio_total_visits');
-    let currentVisits = storedVisits ? parseInt(storedVisits, 10) : 1432;
+    let currentVisits = storedVisits ? parseInt(storedVisits, 10) : 0;
     
     // Check if new session to increment
     const hasVisitedSession = sessionStorage.getItem('visited_current_session');
@@ -136,9 +136,20 @@ const Home = () => {
     
     setVisitorCount(currentVisits);
 
-    // Random natural daily variance for today's visitors
-    const hour = new Date().getHours();
-    setTodayVisitors(Math.floor(35 + (hour * 2.1)));
+    // Track today's visits accurately from 0
+    const todayDate = new Date().toDateString();
+    const lastDate = localStorage.getItem('portfolio_today_date');
+    let currentToday = (lastDate === todayDate && localStorage.getItem('portfolio_today_visits')) 
+      ? parseInt(localStorage.getItem('portfolio_today_visits'), 10) 
+      : 0;
+
+    if (!hasVisitedSession) {
+      currentToday += 1;
+      localStorage.setItem('portfolio_today_visits', currentToday.toString());
+      localStorage.setItem('portfolio_today_date', todayDate);
+    }
+
+    setTodayVisitors(currentToday || (currentVisits > 0 ? 1 : 0));
   }, []);
 
   // Fetch live GitHub repo count
@@ -521,9 +532,9 @@ const Home = () => {
               </div>
             </div>
 
-            <div style={{ paddingLeft: '1rem', borderLeft: '1px solid rgba(255, 255, 255, 0.1)', display: 'none', minWidth: '160px' }} className="visitor-geo">
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Top Locations:</p>
-              <p style={{ fontSize: '0.8rem', color: '#fff', fontWeight: '600' }}>🇮🇳 India • 🇺🇸 US • 🌍 Global</p>
+            <div style={{ paddingLeft: '1rem', borderLeft: '1px solid rgba(255, 255, 255, 0.1)', display: 'none', minWidth: '150px' }} className="visitor-geo">
+              <p style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Status:</p>
+              <p style={{ fontSize: '0.8rem', color: '#00ff9d', fontWeight: '600' }}>● Real-Time Active</p>
             </div>
           </div>
         </div>
