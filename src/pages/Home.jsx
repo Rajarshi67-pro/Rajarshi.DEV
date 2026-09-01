@@ -7,7 +7,6 @@ import {
   Flame, GitBranch, Star, Activity, Users, Eye, TrendingUp, Radio
 } from 'lucide-react';
 import heroImg from '../assets/rajarshi_original_aligned.jpg';
-import FeedbackSection from '../components/FeedbackSection';
 
 const GithubIcon = ({ size = 18, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -677,11 +676,6 @@ const Home = () => {
           ))}
         </div>
       </motion.div>
-
-      {/* ========================================================================= */}
-      {/* 💬 VISITOR FEEDBACK & REVIEWS SECTION */}
-      {/* ========================================================================= */}
-      <FeedbackSection />
 
       <style>{`
         @media (min-width: 640px) {

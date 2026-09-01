@@ -15,10 +15,11 @@ import About from './pages/About';
 import Journey from './pages/Journey';
 import Projects from './pages/Projects';
 import Achievements from './pages/Achievements';
+import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 
-const ROUTE_ORDER = ['/', '/about', '/journey', '/projects', '/achievements', '/contact'];
+const ROUTE_ORDER = ['/', '/about', '/journey', '/projects', '/achievements', '/reviews', '/contact'];
 
 const PageWrapper = ({ children }) => {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ const AnimatedRoutes = () => {
         <Route path="/journey" element={<PageWrapper><Journey /></PageWrapper>} />
         <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
         <Route path="/achievements" element={<PageWrapper><Achievements /></PageWrapper>} />
+        <Route path="/reviews" element={<PageWrapper><Reviews /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/cv" element={<PageWrapper><Resume /></PageWrapper>} />
         <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />

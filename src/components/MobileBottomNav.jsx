@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Home, User, GraduationCap, Briefcase, Award, Mail } from 'lucide-react';
+import { Home, User, GraduationCap, Briefcase, Award, MessageSquare, Mail } from 'lucide-react';
 
 const MobileBottomNav = () => {
   const location = useLocation();
@@ -12,6 +12,7 @@ const MobileBottomNav = () => {
     { path: '/journey', label: 'Journey', icon: GraduationCap },
     { path: '/projects', label: 'Projects', icon: Briefcase },
     { path: '/achievements', label: 'Awards', icon: Award },
+    { path: '/reviews', label: 'Reviews', icon: MessageSquare },
     { path: '/contact', label: 'Contact', icon: Mail },
   ];
 
