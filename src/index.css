@@ -23,6 +23,7 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 html, body {
@@ -168,29 +169,36 @@ ul {
   background: var(--accent-orange);
 }
 
-/* Mobile Media Queries */
+/* Mobile Media Queries & Mobile App Layout */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.2rem;
+    padding: 0 1.1rem;
   }
   
   .page-wrapper {
-    padding-top: 95px;
-    padding-bottom: 3rem;
+    padding-top: 2rem; /* Clean mobile header space */
+    padding-bottom: calc(95px + env(safe-area-inset-bottom, 0px)); /* Never covered by bottom nav dock */
+    min-height: 100vh;
   }
 
   .liquid-glass {
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 1.3rem !important;
+  }
+
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 1rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 0.9rem;
+    padding: 0 0.95rem;
   }
 
   .page-wrapper {
-    padding-top: 85px;
+    padding-top: 1.5rem;
+    padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px));
   }
 }
