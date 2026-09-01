@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ArrowUpRight, Code2 } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Code2, Compass, Utensils, Terminal } from 'lucide-react';
 
 const GithubIcon = ({ size = 15, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -15,6 +15,7 @@ const Projects = () => {
   const projects = [
     {
       id: "bharatvote",
+      category: "web",
       isLatest: true,
       title: "BharatVote — Voting Management System",
       date: "Nov 2025",
@@ -27,6 +28,7 @@ const Projects = () => {
     },
     {
       id: "inventory-ml",
+      category: "python",
       isLatest: true,
       title: "Inventory & Supply Chain System",
       date: "May 2026",
@@ -38,7 +40,47 @@ const Projects = () => {
       accent: "var(--accent-blue)"
     },
     {
+      id: "python-automation-engine",
+      category: "python",
+      isLatest: true,
+      title: "Python Predictive Analytics & ML Suite",
+      date: "Feb 2025",
+      tagline: "Python AI & Data Engine",
+      tech: ["Python", "Pandas", "Scikit-Learn", "NumPy", "Flask"],
+      desc: "Machine learning engine for data preprocessing, statistical regression, and automated prediction pipelines with real-time REST endpoint inference.",
+      github: "https://github.com/Rajarshi67-pro",
+      live: "https://github.com/Rajarshi67-pro",
+      accent: "#00ff9d"
+    },
+    {
+      id: "wander-travel",
+      category: "travel",
+      isLatest: true,
+      title: "WanderSphere — Smart Travel Planner",
+      date: "Jan 2025",
+      tagline: "Travel Discovery & Itinerary App",
+      tech: ["React.js", "Python", "Geolocation API", "Tailwind CSS"],
+      desc: "Interactive travel itinerary builder and destination guide with interactive maps, budgeting calculator, route optimization, and live weather telemetry.",
+      github: "https://github.com/Rajarshi67-pro",
+      live: "https://github.com/Rajarshi67-pro",
+      accent: "var(--accent-orange)"
+    },
+    {
+      id: "bitecraft-food",
+      category: "food",
+      isLatest: true,
+      title: "BiteCraft — Culinary & Food Delivery Platform",
+      date: "Dec 2024",
+      tagline: "Food Ordering & Dining System",
+      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"],
+      desc: "Full-stack food ordering and restaurant discovery application featuring custom dietary filtering, live cart management, and order status tracking.",
+      github: "https://github.com/Rajarshi67-pro",
+      live: "https://github.com/Rajarshi67-pro",
+      accent: "#ff0055"
+    },
+    {
       id: "portfolio-3d",
+      category: "web",
       isLatest: false,
       title: "Personal 3D Portfolio",
       date: "Current",
@@ -51,6 +93,7 @@ const Projects = () => {
     },
     {
       id: "calculator-apps",
+      category: "web",
       isLatest: false,
       title: "Interactive Web Suite",
       date: "Dec 2024",
@@ -63,9 +106,17 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = filter === 'latest' 
-    ? projects.filter(p => p.isLatest) 
-    : projects;
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === filter || (filter === 'latest' && p.isLatest));
+
+  const filterTabs = [
+    { id: 'all', label: 'All Projects' },
+    { id: 'python', label: '🐍 Python & ML' },
+    { id: 'travel', label: '✈️ Travel' },
+    { id: 'food', label: '🍔 Food' },
+    { id: 'web', label: '🌐 Full-Stack' }
+  ];
 
   return (
     <section style={{ padding: '1.5rem 0 4rem 0' }}>
@@ -74,27 +125,24 @@ const Projects = () => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.35rem 0.85rem', borderRadius: '30px', background: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.2)', marginBottom: '0.8rem' }}>
           <Sparkles size={13} color="var(--accent-orange)" />
           <span style={{ color: 'var(--accent-orange)', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.72rem', fontWeight: '700' }}>
-            Featured Projects
+            Featured Portfolio Work
           </span>
         </div>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '0.5rem' }}>
           Featured <span className="gradient-text">Projects</span>
         </h1>
-        <p style={{ maxWidth: '550px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-          Clean, minimal full-stack software and machine learning platforms.
+        <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+          Full-stack software, Python & machine learning models, travel planners, and culinary applications.
         </p>
 
-        {/* Minimal Filter Tabs */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', marginTop: '1.2rem' }}>
-          {[
-            { id: 'all', label: 'All Projects' },
-            { id: 'latest', label: '🔥 Latest 2 Projects' }
-          ].map(tab => (
+        {/* Filter Tabs */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1.4rem', flexWrap: 'wrap' }}>
+          {filterTabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id)}
               style={{
-                padding: '0.4rem 1rem',
+                padding: '0.4rem 0.95rem',
                 borderRadius: '20px',
                 background: filter === tab.id ? 'var(--accent-orange)' : 'rgba(255,255,255,0.05)',
                 color: filter === tab.id ? '#fff' : 'var(--text-secondary)',
@@ -111,8 +159,8 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Minimal Project Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+      {/* Project Cards Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.4rem', maxWidth: '1050px', margin: '0 auto' }}>
         <AnimatePresence>
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -121,10 +169,10 @@ const Projects = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3, delay: index * 0.06 }}
+              transition={{ duration: 0.25, delay: index * 0.04 }}
               className="liquid-glass"
               style={{
-                padding: '1.5rem',
+                padding: '1.4rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -135,7 +183,7 @@ const Projects = () => {
               <div>
                 {/* Header Tag & Date */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
-                  <span style={{ fontSize: '0.75rem', color: project.accent, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <span style={{ fontSize: '0.74rem', color: project.accent, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     {project.tagline}
                   </span>
                   <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
@@ -175,12 +223,12 @@ const Projects = () => {
               </div>
 
               {/* Action Buttons */}
-              <div style={{ display: 'flex', gap: '0.8rem', marginTop: 'auto', paddingTop: '0.9rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                 <motion.a 
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
                     flex: 1,
@@ -206,7 +254,7 @@ const Projects = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
                     flex: 1,

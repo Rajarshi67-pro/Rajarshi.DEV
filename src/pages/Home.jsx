@@ -643,7 +643,7 @@ const Home = () => {
                   <span style={{ fontSize: '0.76rem', color: 'var(--accent-orange)', marginLeft: '0.3rem' }}>+ Repos</span>
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-                  Projects: <strong style={{ color: '#00f0ff' }}>4 Shipped</strong>
+                  Projects: <strong style={{ color: '#00f0ff' }}>7 Shipped</strong>
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                   Handle: <strong style={{ color: '#fff' }}>@Rajarshi67-pro</strong>
