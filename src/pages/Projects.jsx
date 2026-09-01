@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ArrowUpRight, Code2, Compass, Utensils, Terminal, Globe } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Code2, Compass, Utensils, Terminal, Globe, ExternalLink } from 'lucide-react';
 
 const GithubIcon = ({ size = 15, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,35 +14,66 @@ const Projects = () => {
 
   const projects = [
     {
-      id: "insightforge-eda",
-      category: "python",
-      isLatest: true,
-      title: "InsightForge-EDA — Automated Data Intelligence & ML",
-      date: "Aug 2026",
-      tagline: "Automated EDA & ML Platform",
-      tech: ["Python", "Machine Learning", "Pandas", "Scikit-Learn", "Docker"],
-      desc: "Automatically analyzes raw datasets, detects data-quality issues, generates statistical insights, trains ML models, and produces actionable conclusions through an interactive dashboard.",
-      github: "https://github.com/Rajarshi67-pro/InsightForge-EDA",
-      live: "https://github.com/Rajarshi67-pro/InsightForge-EDA",
-      accent: "#00ff9d"
-    },
-    {
       id: "ai-travel-planner",
       category: "travel",
       isLatest: true,
+      hasLiveApp: true,
       title: "AI Travel Planner — Smart Trip & Itinerary System",
       date: "Aug 2026",
       tagline: "AI Trip Generator & Travel Hub",
-      tech: ["TypeScript", "React", "Tailwind CSS", "AI Integration", "REST APIs"],
+      tech: ["TypeScript", "React", "Tailwind CSS", "AI Integration", "Vercel"],
       desc: "AI-powered travel companion that generates custom day-by-day itineraries, hotel and attraction recommendations, budget breakdowns, and route optimization.",
       github: "https://github.com/Rajarshi67-pro/AI-TRAVEL-PLANNER",
-      live: "https://github.com/Rajarshi67-pro/AI-TRAVEL-PLANNER",
+      live: "https://ai-travel-planner-eta-gilt.vercel.app",
+      accent: "var(--accent-orange)"
+    },
+    {
+      id: "insightforge-eda",
+      category: "python",
+      isLatest: true,
+      hasLiveApp: true,
+      title: "InsightForge-EDA — Automated Data Intelligence & ML",
+      date: "Aug 2026",
+      tagline: "Automated EDA & ML Platform",
+      tech: ["Python", "Machine Learning", "Pandas", "Scikit-Learn", "Render"],
+      desc: "Automatically analyzes raw datasets, detects data-quality issues, generates statistical insights, trains ML models, and produces actionable conclusions through an interactive dashboard.",
+      github: "https://github.com/Rajarshi67-pro/InsightForge-EDA",
+      live: "https://insightforge-eda.onrender.com",
+      accent: "#00ff9d"
+    },
+    {
+      id: "inventrack",
+      category: "web",
+      isLatest: true,
+      hasLiveApp: true,
+      title: "InvenTrack — Enterprise Warehouse & Supply Chain",
+      date: "Jun 2026",
+      tagline: "Enterprise Logistics & Forecasting",
+      tech: ["TypeScript", "React", "PL/SQL", "Oracle SQL", "Vercel"],
+      desc: "Enterprise warehouse and supplier management platform featuring barcode integration, automated stock tracking, demand forecasting, and role-based access control.",
+      github: "https://github.com/Rajarshi67-pro/InvenTrack",
+      live: "https://inven-track-six.vercel.app",
+      accent: "var(--accent-blue)"
+    },
+    {
+      id: "ovms-bharatvote",
+      category: "web",
+      isLatest: true,
+      hasLiveApp: true,
+      title: "OVMS — Online Voting Management System",
+      date: "Jun 2026",
+      tagline: "Secure Voting Portal",
+      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "Vercel"],
+      desc: "Robust online election management system with secure voter authentication, candidate management, one-vote-per-user integrity, and real-time live vote tabulation.",
+      github: "https://github.com/Rajarshi67-pro/OVMS",
+      live: "https://ovms.vercel.app",
       accent: "var(--accent-orange)"
     },
     {
       id: "heritage-food-atlas",
       category: "food",
       isLatest: true,
+      hasLiveApp: false,
       title: "Heritage Food Atlas — Culinary Heritage & Cuisines",
       date: "Aug 2026",
       tagline: "Regional Cuisine & Heritage Atlas",
@@ -53,55 +84,31 @@ const Projects = () => {
       accent: "#ff0055"
     },
     {
-      id: "inventrack",
-      category: "web",
-      isLatest: true,
-      title: "InvenTrack — Enterprise Warehouse & Supply Chain",
-      date: "Jun 2026",
-      tagline: "Enterprise Logistics & Forecasting",
-      tech: ["TypeScript", "React", "PL/SQL", "Oracle SQL", "Python ML"],
-      desc: "Enterprise warehouse and supplier management platform featuring barcode integration, automated stock tracking, demand forecasting, and role-based access control.",
-      github: "https://github.com/Rajarshi67-pro/InvenTrack",
-      live: "https://github.com/Rajarshi67-pro/InvenTrack",
-      accent: "var(--accent-blue)"
-    },
-    {
-      id: "ovms-bharatvote",
-      category: "web",
-      isLatest: true,
-      title: "OVMS — Online Voting Management System",
-      date: "Jun 2026",
-      tagline: "Secure Voting Portal",
-      tech: ["Node.js", "Express.js", "MongoDB", "JWT", "JavaScript"],
-      desc: "Robust online election management system with secure voter authentication, candidate management, one-vote-per-user integrity, and real-time live vote tabulation.",
-      github: "https://github.com/Rajarshi67-pro/OVMS",
-      live: "https://github.com/Rajarshi67-pro/OVMS",
-      accent: "var(--accent-orange)"
-    },
-    {
       id: "election-prediction",
       category: "python",
       isLatest: false,
+      hasLiveApp: true,
       title: "Election Winner Predictor — AI Constituency Analytics",
       date: "May 2026",
       tagline: "AI Election Modeling",
-      tech: ["Python", "Machine Learning", "Data Modeling", "JavaScript"],
+      tech: ["Python", "Machine Learning", "Data Modeling", "Vercel"],
       desc: "Constituency-level election predictive analysis system modeling candidate win probabilities based on voter demographic indicators and historical voting trends.",
       github: "https://github.com/Rajarshi67-pro/Election",
-      live: "https://github.com/Rajarshi67-pro/Election",
+      live: "https://election-alpha-eosin.vercel.app/constituency.html",
       accent: "#ffbe0b"
     },
     {
       id: "rajarshi-dev",
       category: "web",
       isLatest: false,
+      hasLiveApp: true,
       title: "Rajarshi.DEV — Personal 3D Developer Portfolio",
       date: "Aug 2026",
       tagline: "Interactive 3D Portfolio",
-      tech: ["React.js", "Vite", "Framer Motion", "Liquid Glassmorphism"],
+      tech: ["React.js", "Vite", "Framer Motion", "Vercel"],
       desc: "High-performance personal developer portfolio with liquid glassmorphic UI, live LeetCode/GitHub stats sync, mobile bottom dock, and real-time reviews.",
       github: "https://github.com/Rajarshi67-pro/Rajarshi.DEV",
-      live: "https://github.com/Rajarshi67-pro/Rajarshi.DEV",
+      live: "https://rajarshi-dev.vercel.app",
       accent: "var(--accent-blue)"
     }
   ];
@@ -125,14 +132,14 @@ const Projects = () => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.35rem 0.85rem', borderRadius: '30px', background: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.2)', marginBottom: '0.8rem' }}>
           <Sparkles size={13} color="var(--accent-orange)" />
           <span style={{ color: 'var(--accent-orange)', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.72rem', fontWeight: '700' }}>
-            GitHub Verified Repositories
+            Published Live Deployments
           </span>
         </div>
         <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '0.5rem' }}>
           Featured <span className="gradient-text">Projects</span>
         </h1>
         <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-          Open-source software, automated Python data engines, AI travel planners, and heritage culinary platforms from GitHub.
+          Explore open-source repositories and test live published web applications deployed on Vercel and Render.
         </p>
 
         {/* Filter Tabs */}
@@ -181,11 +188,18 @@ const Projects = () => {
               }}
             >
               <div>
-                {/* Header Tag & Date */}
+                {/* Header Tag, Status & Date */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
-                  <span style={{ fontSize: '0.74rem', color: project.accent, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    {project.tagline}
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                    <span style={{ fontSize: '0.74rem', color: project.accent, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                      {project.tagline}
+                    </span>
+                    {project.hasLiveApp && (
+                      <span style={{ fontSize: '0.65rem', color: '#00ff9d', background: 'rgba(0, 255, 157, 0.1)', border: '1px solid rgba(0, 255, 157, 0.25)', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: '700' }}>
+                        ● Live
+                      </span>
+                    )}
+                  </div>
                   <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.04)', padding: '0.15rem 0.45rem', borderRadius: '4px' }}>
                     {project.date}
                   </span>
@@ -222,7 +236,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Action Buttons with direct GitHub repository URLs */}
+              {/* Action Buttons with direct GitHub repository URLs & Live Website Links */}
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.85rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                 <motion.a 
                   href={project.github}
@@ -236,10 +250,10 @@ const Projects = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.4rem',
-                    padding: '0.5rem 0.8rem',
+                    padding: '0.52rem 0.8rem',
                     background: 'var(--accent-orange)',
                     color: '#fff',
-                    borderRadius: '6px',
+                    borderRadius: '7px',
                     textDecoration: 'none',
                     fontWeight: '700',
                     fontSize: '0.82rem',
@@ -247,7 +261,7 @@ const Projects = () => {
                   }}
                 >
                   <GithubIcon size={14} />
-                  <span>GitHub Repo</span>
+                  <span>GitHub</span>
                 </motion.a>
 
                 <motion.a 
@@ -262,18 +276,18 @@ const Projects = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.4rem',
-                    padding: '0.5rem 0.8rem',
+                    padding: '0.52rem 0.8rem',
                     background: 'var(--accent-blue)',
                     color: '#050505',
-                    borderRadius: '6px',
+                    borderRadius: '7px',
                     textDecoration: 'none',
-                    fontWeight: '700',
+                    fontWeight: '800',
                     fontSize: '0.82rem',
                     boxShadow: '0 0 10px rgba(0, 240, 255, 0.25)'
                   }}
                 >
-                  <span>Explore</span>
-                  <ArrowUpRight size={13} />
+                  <span>{project.hasLiveApp ? 'Live Website' : 'Explore'}</span>
+                  <ExternalLink size={13} strokeWidth={2.5} />
                 </motion.a>
               </div>
             </motion.div>
